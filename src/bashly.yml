@@ -1,0 +1,28 @@
+name: kuberen
+help: Simple tool to rename Kubernetes resources
+version: 0.0.1
+
+args:
+- name: resource
+  required: true
+  help: Kubernetes resource type
+- name: name
+  required: true
+  help: Current name of the resources
+- name: targetName
+  required: true
+  help: Target name of the resources
+
+flags:
+- long: --namespace
+  short: -n
+  arg: namespace
+  help: "Namespace (default: default)"
+
+examples:
+- kuberen deployment my-app my-app-1
+- kuberen secret token token-old -n kube-system
+
+dependencies:
+  jq: "Missing jq tool. Install it before you start using kuberen"
+  kubectl: "Missing kubectl tool. Install it before you start using kuberen"
